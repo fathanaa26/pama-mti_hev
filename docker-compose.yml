@@ -1,0 +1,20 @@
+services:
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - 8086:8086
+    volumes:
+      - $PWD/docker/influxdb2/var:/var/lib/influxdb2
+      - $PWD/docker/influxdb2/etc/configs:/etc/influxdb2/configs
+      - $PWD/docker/influxdb2/etc:/etc/influxdb2
+
+  grafana:
+    image: grafana/grafana-enterprise:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage:
+
